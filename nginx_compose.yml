@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  main:
+    image: maweibinguo/nginx:1.17
+    container_name: main
+    networks:
+      - nginx
+    volumes:
+      - ./configs/main.conf:/usr/etc/nginx/main.conf
+    command: /usr/sbin/nginx -c /etc/nginx/nginx.conf
+    ports: 
+      - 8088:8088
+
+  nginx1:
+    image: maweibinguo/nginx:1.17
+    container_name: nginx01
+    networks:
+      - nginx
+    volumes:
+      - ./configs/node1.conf:/usr/etc/nginx/node1.conf
+    command: /usr/sbin/nginx -c /etc/nginx/nginx.conf
+
+  nginx2:
+    image: maweibinguo/nginx:1.17
+    container_name: nginx02
+    networks:
+      - nginx
+    volumes:
+      - ./configs/node2.conf:/usr/etc/nginx/node2.conf
+    command: /usr/sbin/nginx -c /etc/nginx/nginx.conf
+
+
+networks:
+  nginx:
+    driver: bridge   
