@@ -1,3 +1,8 @@
+### 服务管理
+启动服务 => docker compose -f ./nginx_compose.yml up -d
+停止服务 => docker compose -f ./nginx_compose.yml down
+ 
+
 ### 如何测试
 可以使用curl http://127.0.0.1:8088/ 去测试upstream的轮训策略
 
